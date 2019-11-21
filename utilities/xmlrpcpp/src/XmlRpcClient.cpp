@@ -42,6 +42,10 @@ XmlRpcClient::XmlRpcClient(const char* host, int port, const char* uri/*=0*/)
   _connectionState = NO_CONNECTION;
   _executing = false;
   _eof = false;
+  _isFault = false;
+  _sendAttempts = 0;
+  _bytesWritten = 0;
+  _contentLength = 0;
 
   // Default to keeping the connection open until an explicit close is done
   setKeepOpen();
