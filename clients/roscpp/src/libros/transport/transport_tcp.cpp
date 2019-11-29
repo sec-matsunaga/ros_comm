@@ -58,8 +58,12 @@ TransportTCP::TransportTCP(PollSet* poll_set, int flags)
 , local_port_(-1)
 , poll_set_(poll_set)
 , flags_(flags)
+, connected_port_(0)
 {
-
+  memset(&server_address_, 0, sizeof(sockaddr_storage));
+  sa_len_ = s_use_ipv6_ ? sizeof(sockaddr_in6) : sizeof(sockaddr_in);
+  memset(&local_address_, 0, sizeof(sockaddr_storage));
+  la_len_ = s_use_ipv6_ ? sizeof(sockaddr_in6) : sizeof(sockaddr_in);
 }
 
 TransportTCP::~TransportTCP()

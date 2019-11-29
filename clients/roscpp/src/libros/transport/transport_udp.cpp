@@ -82,6 +82,10 @@ TransportUDP::TransportUDP(PollSet* poll_set, int flags, int max_datagram_size)
   reorder_start_ = reorder_buffer_;
   data_buffer_ = new uint8_t[max_datagram_size_];
   data_start_ = data_buffer_;
+
+  memset(&server_address_, 0, sizeof(sockaddr_in));
+  memset(&local_address_, 0, sizeof(sockaddr_in));
+  memset(&reorder_header_, 0, sizeof(TransportUDPHeader));
 }
 
 TransportUDP::~TransportUDP()
