@@ -41,8 +41,10 @@ namespace ros
 struct ROSCPP_DECL AdvertiseOptions
 {
   AdvertiseOptions()
-  : callback_queue(0)
+  : queue_size(0)
+  , callback_queue(0)
   , latch(false)
+  , has_header(false)
   {
   }
 
