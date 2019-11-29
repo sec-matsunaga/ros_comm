@@ -75,7 +75,14 @@ void init(const M_string& remappings)
       ROS_BREAK();
     }
 
-    g_uri = master_uri_env;
+    if (master_uri_env)
+    {
+      g_uri = master_uri_env;
+    }
+    else
+    {
+      g_uri = "http://localhost:11311";
+    }
 
 #ifdef _MSC_VER
     // http://msdn.microsoft.com/en-us/library/ms175774(v=vs.80).aspx

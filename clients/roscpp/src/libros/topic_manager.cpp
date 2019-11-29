@@ -710,6 +710,12 @@ void TopicManager::publish(const std::string& topic, const boost::function<Seria
   }
 
   PublicationPtr p = lookupPublicationWithoutLock(topic);
+  ROS_ASSERT(p);
+  if (!p)
+  {
+    return;
+  }
+
   if (p->hasSubscribers() || p->isLatching())
   {
     ROS_DEBUG_NAMED("superdebug", "Publishing message on topic [%s] with sequence number [%d]", p->getName().c_str(), p->getSequence());
@@ -780,7 +786,7 @@ bool TopicManager::isLatched(const std::string& topic)
 
 PublicationPtr TopicManager::lookupPublicationWithoutLock(const string &topic)
 {
-  PublicationPtr t;
+  PublicationPtr t = NULL;
   for (V_Publication::iterator i = advertised_topics_.begin();
        !t && i != advertised_topics_.end(); ++i)
   {

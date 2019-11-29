@@ -220,6 +220,11 @@ void TransportPublisherLink::onRetryTimer(const ros::SteadyTimerEvent&)
 
       TransportTCPPtr old_transport = boost::dynamic_pointer_cast<TransportTCP>(connection_->getTransport());
       ROS_ASSERT(old_transport);
+      if (!old_transport)
+      {
+        return;
+      }
+
       const std::string& host = old_transport->getConnectedHost();
       int port = old_transport->getConnectedPort();
 
