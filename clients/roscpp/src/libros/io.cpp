@@ -324,6 +324,7 @@ pollfd_vector_ptr poll_sockets(int epfd, socket_pollfd *fds, nfds_t nfds, int ti
 		{
 			socket_pollfd pfd;
 			pfd.fd = ev[i].data.fd;
+			pfd.events = 0x0000;
 			pfd.revents = ev[i].events;
 			ofds->push_back(pfd);
 		}

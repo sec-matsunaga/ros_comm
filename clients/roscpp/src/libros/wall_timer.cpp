@@ -34,6 +34,9 @@ namespace ros
 WallTimer::Impl::Impl()
   : started_(false)
   , timer_handle_(-1)
+  , callback_queue_(0)
+  , has_tracked_object_(false)
+  , oneshot_(false)
 { }
 
 WallTimer::Impl::~Impl()

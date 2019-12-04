@@ -37,7 +37,13 @@ namespace ros
 {
 
 StatisticsLogger::StatisticsLogger()
-: pub_frequency_(1.0)
+: max_window(64)
+, min_window(4)
+, max_elements(100)
+, min_elements(10)
+, enable_statistics(false)
+, hasHeader_(false)
+, pub_frequency_(1.0)
 {
 }
 
