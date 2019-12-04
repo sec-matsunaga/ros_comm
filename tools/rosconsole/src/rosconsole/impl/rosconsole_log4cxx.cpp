@@ -181,7 +181,13 @@ void initialize()
 
 void print(void* handle, ::ros::console::Level level, const char* str, const char* file, const char* function, int line)
 {
+  if (handle == NULL)
+  {
+    fprintf(stderr, "Log can't output, Logger handle is NULL");
+    return;
+  }
   log4cxx::Logger* logger  = (log4cxx::Logger*)handle;
+
   try
   {
     logger->forcedLog(g_level_lookup[level], str, log4cxx::spi::LocationInfo(file, function, line));
