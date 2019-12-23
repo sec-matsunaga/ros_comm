@@ -183,7 +183,7 @@ void print(void* handle, ::ros::console::Level level, const char* str, const cha
 {
   if (handle == NULL)
   {
-    fprintf(stderr, "Log can't output, Logger handle is NULL");
+    fprintf(stderr, "Log can't output, Logger handle is NULL\n");
     return;
   }
   log4cxx::Logger* logger  = (log4cxx::Logger*)handle;
