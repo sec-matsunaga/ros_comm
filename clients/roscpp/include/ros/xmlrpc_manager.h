@@ -148,7 +148,7 @@ private:
   V_CachedXmlRpcClient clients_;
   boost::mutex clients_mutex_;
 
-  bool shutting_down_;
+  volatile bool shutting_down_;
 
   ros::WallDuration master_retry_timeout_;
 
