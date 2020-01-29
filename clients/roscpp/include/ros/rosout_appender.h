@@ -74,7 +74,7 @@ protected:
   V_Log log_queue_;
   boost::mutex queue_mutex_;
   boost::condition_variable queue_condition_;
-  bool shutting_down_;
+  volatile bool shutting_down_;
 
   boost::thread publish_thread_;
 };
