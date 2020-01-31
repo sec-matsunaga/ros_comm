@@ -101,7 +101,7 @@ XmlRpcDispatch::work(double timeout)
     // Construct the sets of descriptors we are interested in
     const unsigned source_cnt = _sources.size();
     pollfd fds[source_cnt];
-    XmlRpcSource * sources[source_cnt];
+    XmlRpcSource * sources[source_cnt] = {};
 
     SourceList::iterator it;
     std::size_t i = 0;
